@@ -5,7 +5,7 @@ from telegram.ext import Application, CommandHandler
 PREMIUM_KEY = "H123acker!!N#t!2wTreHHok"
 
 # 🔹 Telegram Bot Token (Replace with your bot's token)
-BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE'
+BOT_TOKEN = '7679342786:AAGk43ImLwVT-0JTrWnw7wzMAMO38acfIsQ'
 
 # 📌 Start Command
 async def start(update: Update, context):
