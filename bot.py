@@ -1,26 +1,11 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler
-import sqlite3
 
-# 🔑 Bot Token from BotFather
-BOT_TOKEN = '7679342786:AAGk43ImLwVT-0JTrWnw7wzMAMO38acfIsQ'
+# 🔑 Fixed Premium Key
+PREMIUM_KEY = "H123acker!!N#t!2wTreHHok"
 
-# ✅ Function to Verify Key
-def check_key(user_key):
-    conn = sqlite3.connect("keys.db")
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT * FROM premium_keys WHERE key = ? AND status = 'unused'", (user_key,))
-    key_data = cursor.fetchone()
-
-    if key_data:
-        cursor.execute("UPDATE premium_keys SET status = 'used' WHERE key = ?", (user_key,))
-        conn.commit()
-        conn.close()
-        return True
-    else:
-        conn.close()
-        return False
+# 🔹 Telegram Bot Token (Replace with your bot's token)
+BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE'
 
 # 📌 Start Command
 async def start(update: Update, context):
@@ -38,15 +23,15 @@ async def verify_key(update: Update, context):
     user_text = update.message.text.split()
 
     if len(user_text) < 2:
-        await update.message.reply_text("⚠️ Usage: `/key YOUR_24_DIGIT_KEY`")
+        await update.message.reply_text("⚠️ Usage: `/key YOUR_KEY`")
         return
 
     user_key = user_text[1]
     
-    if check_key(user_key):
-        await update.message.reply_text("✅ Your key is verified! Unlimited access activated. 🔥")
+    if user_key == PREMIUM_KEY:
+        await update.message.reply_text("✅ Key Verified! Unlimited Access Activated. 🔥")
     else:
-        await update.message.reply_text("❌ Invalid or already used key!")
+        await update.message.reply_text("❌ Invalid Key! Buy from @HackerNet0101")
 
 # 🚀 Main Function
 def main():
